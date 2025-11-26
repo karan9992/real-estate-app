@@ -32,13 +32,14 @@ app.use("/api/agent", agentRoutes);
 
 // 🚀 Serve frontend (Vite) in production
 if (process.env.NODE_ENV === "production") {
-  const frontendPath = path.join(__dirname, "../frontend/real-estate-app/dist");
+  const frontendPath = path.resolve(__dirname, "../../frontend/real-estate-app/dist");
   app.use(express.static(frontendPath));
 
-  app.use((req, res, next) => {
+  app.use((req, res) => {
     res.sendFile(path.join(frontendPath, "index.html"));
   });
 }
+
 
 // Start Server
 app.listen(PORT, () => {
