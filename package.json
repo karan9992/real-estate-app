@@ -1,14 +1,14 @@
 {
-    "name": "real-estate-app",
-    "version": "1.0.0",
-    "scripts": {
-        "start": "node backend/src/server.js",
-        "server": "cd backend && node src/server.js",
-        "client": "cd frontend && npm start",
-        "build": "cd frontend && npm install && npm run build",
-        "postinstall": "npm run build"
-    },
-    "dependencies": {
-        "concurrently": "^8.2.2"
-    }
+  "name": "real-estate-app",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node backend/src/server.js",
+    "server": "cd backend && node src/server.js",
+    "client": "cd frontend/real-estate-app && npm start",
+    "build": "cd frontend/real-estate-app && npm run build",
+    "postinstall": "npm run build"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
 }
