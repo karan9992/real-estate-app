@@ -38,7 +38,7 @@ const AgentMyProp = () => {
     useEffect(() => {
 
         if (propertyList.length < 1) {
-            axios.get(`${process.env.REACT_APP_API_URL}/api/agent/properties/${id}`, {
+            axios.get(`${import.meta.env.REACT_APP_API_URL}/api/agent/properties/${id}`, {
                 withCredentials: true
             })
                 .then((res) => {

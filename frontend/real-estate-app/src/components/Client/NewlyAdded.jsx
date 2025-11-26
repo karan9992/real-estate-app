@@ -15,7 +15,7 @@ const NewlyAdded = () => {
 
     useEffect(() => {
         if (propertyList.length === 0) {
-            axios.post(`${process.env.REACT_APP_API_URL}/api/client/properties`, {}, { withCredentials: true }
+            axios.post(`${import.meta.env.REACT_APP_API_URL}/api/client/properties`, {}, { withCredentials: true }
             )
                 .then((res) => {
                     console.log(res.data);

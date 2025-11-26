@@ -27,7 +27,7 @@ const Landing = () => {
     const handleLogin = (e) => {
         e.preventDefault()
 
-        axios.post(`${process.env.REACT_APP_API_URL}/api/auth/login`, user, { withCredentials: true })
+        axios.post(`${import.meta.env.REACT_APP_API_URL}/api/auth/login`, user, { withCredentials: true })
             .then((res) => {
                 console.log(res);
                 toast.success(res.data.message)

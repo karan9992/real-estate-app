@@ -48,7 +48,7 @@ const EditPropertyModal = ({ isOpen, onClose, initialData, onSave, title, isEdit
 
       //api to edit properties
 
-      axios.put(`${process.env.REACT_APP_API_URL}/api/agent/properties/${currentProperty._id}`, updatedData, {
+      axios.put(`${import.meta.env.REACT_APP_API_URL}/api/agent/properties/${currentProperty._id}`, updatedData, {
                 withCredentials: true
             })
         .then((res) => {
@@ -61,7 +61,7 @@ const EditPropertyModal = ({ isOpen, onClose, initialData, onSave, title, isEdit
       console.log("current-add ", currentProperty, updatedData);
 
       //api to add new property
-      axios.post(`${process.env.REACT_APP_API_URL}/api/agent/add`, updatedData, {
+      axios.post(`${import.meta.env.REACT_APP_API_URL}/api/agent/add`, updatedData, {
                 withCredentials: true
             })
         .then((res) => {

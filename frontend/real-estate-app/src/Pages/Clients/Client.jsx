@@ -23,7 +23,7 @@ const Client = () => {
     console.log("Interestd :", prop);
 
     //api to add to interested
-    axios.post(`${process.env.REACT_APP_API_URL}/api/client/properties/interested`, {
+    axios.post(`${import.meta.env.REACT_APP_API_URL}/api/client/properties/interested`, {
       clientId: id,
       propertyId: prop._id }, 
       { withCredentials: true })
@@ -37,7 +37,7 @@ const Client = () => {
 
   useEffect(() => {
    if(propertyList.length === 0 ){
-      axios.post(`${process.env.REACT_APP_API_URL}/api/client/properties`, {}, { withCredentials: true }
+      axios.post(`${import.meta.env.REACT_APP_API_URL}/api/client/properties`, {}, { withCredentials: true }
     )
       .then((res) => {
         console.log(res.data);

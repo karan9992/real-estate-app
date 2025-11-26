@@ -35,7 +35,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     console.log("Logged out");
-    axios.post(`${process.env.REACT_APP_API_URL}/api/auth/logout`, {}, { withCredentials: true })
+    axios.post(`${import.meta.env.REACT_APP_API_URL}/api/auth/logout`, {}, { withCredentials: true })
       .then((res) => {
         console.log(res)
         dispatch(clearUser());

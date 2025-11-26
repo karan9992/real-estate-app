@@ -42,7 +42,7 @@ const ClientSidebar = ({ onFilter }) => {
         console.log("search :",  location,maxPrice,minPrice,selectedBedrooms)
       
 
-        axios.post(`${process.env.REACT_APP_API_URL}/api/client/properties`, { location,maxPrice,minPrice,bedrooms:selectedBedrooms },
+        axios.post(`${import.meta.env.REACT_APP_API_URL}/api/client/properties`, { location,maxPrice,minPrice,bedrooms:selectedBedrooms },
         {withCredentials:true})
             .then((res) => {
                 console.log(res.data);

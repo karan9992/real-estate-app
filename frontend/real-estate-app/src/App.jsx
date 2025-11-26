@@ -10,7 +10,7 @@ function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    axios.get("http://localhost:3000/api/auth/verify", { withCredentials: true })
+    axios.get(`${import.meta.env.REACT_APP_API_URL}/api/auth/verify`, { withCredentials: true })
       .then(res => {
         console.log(res);
         dispatch(setName(res.data.user.name));

@@ -19,7 +19,7 @@ const Register = () => {
         if (!user.password) return toast.error("Please enter password")
 
         console.log(user);
-        axios.post(`${process.env.REACT_APP_API_URL}/api/auth/register`, user)
+        axios.post(`${import.meta.env.REACT_APP_API_URL}/api/auth/register`, user)
             .then((res) => {
                 console.log(res);
                 toast.success(res.data.message)

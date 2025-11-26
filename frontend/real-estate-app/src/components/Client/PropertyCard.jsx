@@ -5,7 +5,7 @@ const PropertyCard = ({ name, details, location, price, bedrooms, _id, btnName, 
 
     const delFunct = () => {
         console.log("delete:", name,_id);
-        axios.delete(`${process.env.REACT_APP_API_URL}/api/agent/properties/${_id}`, { withCredentials: true })
+        axios.delete(`${import.meta.env.REACT_APP_API_URL}/api/agent/properties/${_id}`, { withCredentials: true })
             .then((res) => console.log(res))
             .catch((err) => console.log(err))
     }

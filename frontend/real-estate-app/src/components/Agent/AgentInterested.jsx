@@ -12,7 +12,7 @@ const AgentInterested = () => {
 
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_API_URL}/api/agent/interested/${id}`, {
+        axios.get(`${import.meta.env.REACT_APP_API_URL}/api/agent/interested/${id}`, {
                 withCredentials: true
             })
             .then((res) => {
