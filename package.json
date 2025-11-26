@@ -3,10 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "start": "node backend/src/server.js",
-    "server": "cd backend && node src/server.js",
-    "client": "cd frontend/real-estate-app && npm start",
     "build": "cd frontend/real-estate-app && npm install && npm run build",
-    "postinstall": "npm run build"
+    "postinstall": "cd backend && npm install && cd .. && npm run build"
   },
   "dependencies": {
     "concurrently": "^8.2.2"
