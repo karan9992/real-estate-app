@@ -1,0 +1,50 @@
+/* .top-Acontainer {
+  
+    min-height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    margin-top: 7vh;
+    background-color: #ffffff;
+   
+} */
+/* Grid layout for sidebar + content */
+.top-Acontainer {
+    flex: 1;                     /* Take full height except footer */
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    margin-top: 7vh;
+    overflow-y:auto;
+    min-height: 80vh;         /* Stop internal overflow */
+    width: 100vw;                /* Instead of 100vw to prevent horizontal scroll */
+}
+/* .sidebar {
+    background-color: #3374d6;}
+.main {    
+    min-height: max-content;
+    background-color: #ffffffd2;
+} */
+
+.sidebar {
+    background-color: #3374d6;
+    min-height: 100%;
+}
+
+/* Main content (scrollable if content grows) */
+.main {
+    background-color: #ffffffd2;  
+    overflow-y: auto;           /* Enable scrolling INSIDE main section */
+    max-height: calc(100vh - 7vh); /* Dynamically fits with navbar height */
+}
+
+.footer-container{
+    background-color: #872d2d;
+  
+   
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}

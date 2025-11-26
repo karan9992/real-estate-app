@@ -1,0 +1,29 @@
+.property-group {
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #f8f9ff;
+}
+
+.client-list {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.client-item {
+  padding: 4px 0;
+  font-size: 0.95rem;
+ 
+}
+
+
+
+.client-card {
+  padding: 10px;
+  background: white;
+  border: 1px solid #aac;
+  border-radius: 6px;
+  width: 200px;
+}

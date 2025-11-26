@@ -1,0 +1,71 @@
+.top-container {
+    /* background-image: url("../../assets/images/mumbai-skyline.jpg"); */
+    background:
+        linear-gradient(rgba(0, 123, 255, 0.5), rgba(7, 31, 56, 0.5)),
+        /* blue transparent overlay */
+        url("../../assets/images/mumbai-skyline.jpg");
+
+    background-size: cover;
+    /* Scale image to cover entire area */
+    background-position: center;
+    /* Center image */
+    background-repeat: no-repeat;
+    /* Prevent repeating */
+    width: 100vw;
+    height: 100vh;
+    filter: brightness(40%);
+    margin: 0;
+    padding: 0;
+    z-index: -10;
+
+}
+
+.content {  
+    position: absolute;
+    top: 5vh;
+    width: 100vw;
+    color: white;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: start;
+   
+  
+}
+
+
+.right{
+    /* border: 1px solid red; */
+
+    background-color: #27318cf3;
+    display: flex;
+      align-items: center;
+    flex-direction: column;
+    width:  20%;
+    padding: 1vw 3vw;
+    border-radius: 5px;
+    box-shadow: 5px 5px 25px black;
+}
+.content input ,.content button, select{
+    width: 90%;
+    background-color: #fff;
+    margin: 0.5em;
+    padding: 0.5em;
+    color: black;
+    font-size: 1.3em;
+    border-radius: 5px;
+    outline: none;
+}
+.content button{
+     color: rgb(243, 243, 243);
+      background-color: #000000;
+      width: 100%;
+}
+.right a{
+    display: inline;
+}
+.right .title{
+   margin-bottom: 2vw;
+    font-size: 2em;
+}
+

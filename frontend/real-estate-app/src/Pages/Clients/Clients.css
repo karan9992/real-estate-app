@@ -1,0 +1,95 @@
+.card-container {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 20px;
+  gap: 20px;         
+  width: 95%;
+  box-sizing: border-box;
+  
+}
+.sidebar{
+  position: absolute;
+  top: 0;
+  left:0;
+  width: 20vw;
+}
+.main{
+  width: 80vw;
+   position: absolute;
+  top: 7vh;
+  right:0;
+  min-height: 100vh;
+}
+.main-container{
+
+ margin-top: 10vh; 
+
+  background: #ffffff;
+  min-height: 100vh;
+
+}
+
+
+.client-card {
+  flex: 0 1 calc(50% - 20px);  
+  box-sizing: border-box;     
+  padding: 20px;
+  background: rgba(124, 151, 239, 0.427);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+}
+
+.left-section {
+  width: 140px;
+  height: 140px;
+  background: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.property-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.middle-section {
+  flex: 1;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.title {
+  margin: 0;
+  font-size: 22px;
+}
+
+.location {
+  color: gray;
+  font-size: 16px;
+}
+
+.right-section {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.interest-btn {
+  background: #333;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
