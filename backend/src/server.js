@@ -16,11 +16,22 @@ const agentRoutes = require('./routes/agentRoutes');
 // Connect DB
 connectDb();
 
+console.log(("ENV :",process.env.FRONTEND_URL));
+const frontendUrl=process.env.FRONTEND_URL;
+const localFrontendUrl = process.env.FRONTEND_LOCAL_URL
+// CORS Options
+const corsOptions = {
+    origin:'=https://real-estate-app-jii0.onrender.com' ,
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+};
+
+// 👉 Must be placed before routes
+app.use(cors(corsOptions));
+
+
 // Middleware
-app.use(cors({
-  origin: process.env.FRONTEND_URL,
-  credentials: true,
-}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -30,18 +41,17 @@ app.use("/api/client", clientRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/agent", agentRoutes);
 
-// 🚀 Serve frontend (Vite) in production
+// 🔥 Fix 404 fallback route for production (Vite)
 if (process.env.NODE_ENV === "production") {
   const frontendPath = path.resolve(__dirname, "../../frontend/real-estate-app/dist");
   app.use(express.static(frontendPath));
 
-  app.use((req, res) => {
+  app.get("/*", (req, res) => {
     res.sendFile(path.join(frontendPath, "index.html"));
   });
 }
 
-
 // Start Server
 app.listen(PORT, () => {
-  console.log("Server running on port:", PORT);
+  console.log(`🚀 Server running on port: ${PORT}`);
 });

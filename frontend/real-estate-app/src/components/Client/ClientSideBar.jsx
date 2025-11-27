@@ -39,11 +39,11 @@ const ClientSidebar = ({ onFilter }) => {
         }))
 
 
-        console.log("search :",  location,maxPrice,minPrice,selectedBedrooms)
-      
+        console.log("search :", location, maxPrice, minPrice, selectedBedrooms)
 
-        axios.post(`${import.meta.env.REACT_APP_API_URL}/api/client/properties`, { location,maxPrice,minPrice,bedrooms:selectedBedrooms },
-        {withCredentials:true})
+
+        axios.post(`${import.meta.env.VITE_API_URL}/api/client/properties`, { location, maxPrice, minPrice, bedrooms: selectedBedrooms },
+            { withCredentials: true })
             .then((res) => {
                 console.log(res.data);
                 dispatch(setPropertyList(res.data))
@@ -76,7 +76,7 @@ const ClientSidebar = ({ onFilter }) => {
             <div className="filter-group">
                 <label>Bedrooms</label>
                 <div className="checkbox-group">
-                    {["1", "2", "3", "4",'5'].map((item) => (
+                    {["1", "2", "3", "4", '5'].map((item) => (
                         <label key={item} className="checkbox-label">
                             <input
                                 type="checkbox"

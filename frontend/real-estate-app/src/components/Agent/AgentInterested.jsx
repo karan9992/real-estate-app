@@ -12,9 +12,9 @@ const AgentInterested = () => {
 
 
     useEffect(() => {
-        axios.get(`${import.meta.env.REACT_APP_API_URL}/api/agent/interested/${id}`, {
-                withCredentials: true
-            })
+        axios.get(`${import.meta.env.VITE_API_URL}/api/agent/interested/${id}`, {
+            withCredentials: true
+        })
             .then((res) => {
                 console.log(res.data);
                 setData(res.data)

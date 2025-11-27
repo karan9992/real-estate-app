@@ -35,11 +35,11 @@ const Navbar = () => {
 
   const handleLogout = () => {
     console.log("Logged out");
-    axios.post(`${import.meta.env.REACT_APP_API_URL}/api/auth/logout`, {}, { withCredentials: true })
+    axios.post(`${import.meta.env.VITE_API_URL}/api/auth/logout`, {}, { withCredentials: true })
       .then((res) => {
         console.log(res)
         dispatch(clearUser());
-        
+
         navigate("/");
       })
       .finally((err) => console.log(err))
@@ -59,7 +59,7 @@ const Navbar = () => {
 
 
 
-    axios.post('http://localhost:3000/api/client/properties', { location: location, ...user },{withCredentials:true}
+    axios.post('http://localhost:3000/api/client/properties', { location: location, ...user }, { withCredentials: true }
     )
       .then((res) => {
         console.log(res.data);
@@ -71,7 +71,7 @@ const Navbar = () => {
   }
 
   return (<>
-   
+
 
     <div className='navbar'>
       <div className='logo flexbox'>

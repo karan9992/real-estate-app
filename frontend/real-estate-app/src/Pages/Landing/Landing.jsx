@@ -7,12 +7,12 @@ import { ToastContainer, toast, Slide } from 'react-toastify'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from "react-redux";
-import { setName,  setPropertiesInterested, setId, setRole} from "../../redux/features/userSlice";
+import { setName, setPropertiesInterested, setId, setRole } from "../../redux/features/userSlice";
 import NewlyAdded from '../../components/Client/NewlyAdded'
 
 
 const Landing = () => {
-   // const user = useSelector((state) => state.user);
+    // const user = useSelector((state) => state.user);
     const dispatch = useDispatch()
 
     const [user, setUser] = useState({ email: "", password: "" })
@@ -27,21 +27,21 @@ const Landing = () => {
     const handleLogin = (e) => {
         e.preventDefault()
 
-        axios.post(`${import.meta.env.REACT_APP_API_URL}/api/auth/login`, user, { withCredentials: true })
+        axios.post(`${import.meta.env.VITE_API_URL}/api/auth/login`, user, { withCredentials: true })
             .then((res) => {
                 console.log(res);
                 toast.success(res.data.message)
                 //redux store save values
-               dispatch(setId({id:res.data.user._id}))
-               dispatch(setName({name:res.data.user.name}))
-               dispatch(setRole({role:res.data.user.role}))
-               dispatch(setPropertiesInterested({propertiesInterested:res.data.user.propertiesInterested}))
+                dispatch(setId({ id: res.data.user._id }))
+                dispatch(setName({ name: res.data.user.name }))
+                dispatch(setRole({ role: res.data.user.role }))
+                dispatch(setPropertiesInterested({ propertiesInterested: res.data.user.propertiesInterested }))
                 setTimeout(() => {
-                    if(res.data.user.role=="client"){
-                    navigate("/client")
-                    }else if(res.data.user.role=="agent"){
-                          navigate("/agent")
-                          
+                    if (res.data.user.role == "client") {
+                        navigate("/client")
+                    } else if (res.data.user.role == "agent") {
+                        navigate("/agent")
+
                     }
                 }, 3000);
 

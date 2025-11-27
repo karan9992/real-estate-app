@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./NewlyAdded.css";
 import axios from "axios";
-import {useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { setCurrentProperty, setPropertyList } from "../../redux/features/propertySlice";
 import bedroomImg from "../../assets/images/bldg1.webp"
 
@@ -11,18 +11,21 @@ import bedroomImg from "../../assets/images/bldg1.webp"
 const NewlyAdded = () => {
     const dispatch = useDispatch()
     const { currentProperty, propertyList } = useSelector((state) => state.properties);
-
+    const baseUrl = import.meta.env.VITE_API_URL
 
     useEffect(() => {
         if (propertyList.length === 0) {
-            axios.post(`${import.meta.env.REACT_APP_API_URL}/api/client/properties`, {}, { withCredentials: true }
-            )
-                .then((res) => {
-                    console.log(res.data);
-                    dispatch(setPropertyList(res.data))
-                    // setPropArray(res.data)
-                })
-                .catch((err) => console.error(err))
+            console.log(import.meta.env.VITE_API_URL);
+            if (document.cookie) {
+                axios.post(`${import.meta.env.VITE_API_URL}/api/client/properties`, {}, { withCredentials: true }
+                )
+                    .then((res) => {
+                        console.log(res.data);
+                        dispatch(setPropertyList(res.data))
+                        // setPropArray(res.data)
+                    })
+                    .catch((err) => console.error(err))
+            }
         }
 
     }, [])

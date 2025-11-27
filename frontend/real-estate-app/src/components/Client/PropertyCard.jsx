@@ -4,8 +4,8 @@ import './PropertyCard.css'
 const PropertyCard = ({ name, details, location, price, bedrooms, _id, btnName, btnFunction, btnDelete, deleteFunction }) => {
 
     const delFunct = () => {
-        console.log("delete:", name,_id);
-        axios.delete(`${import.meta.env.REACT_APP_API_URL}/api/agent/properties/${_id}`, { withCredentials: true })
+        console.log("delete:", name, _id);
+        axios.delete(`${import.meta.env.VITE_API_URL}/api/agent/properties/${_id}`, { withCredentials: true })
             .then((res) => console.log(res))
             .catch((err) => console.log(err))
     }
