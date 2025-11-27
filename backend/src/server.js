@@ -46,7 +46,7 @@ if (process.env.NODE_ENV === "production") {
   const frontendPath = path.resolve(__dirname, "../../frontend/real-estate-app/dist");
   app.use(express.static(frontendPath));
 
-  app.get("/*", (req, res) => {
+  app.get("*", (req, res) => {
     res.sendFile(path.join(frontendPath, "index.html"));
   });
 }
