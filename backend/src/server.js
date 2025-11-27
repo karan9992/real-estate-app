@@ -21,7 +21,7 @@ const frontendUrl = process.env.FRONTEND_URL;
 const localFrontendUrl = process.env.FRONTEND_LOCAL_URL
 // CORS Options
 const corsOptions = {
-  origin: '=https://real-estate-app-jii0.onrender.com',
+  origin:'https://real-estate-app-jii0.onrender.com',
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
