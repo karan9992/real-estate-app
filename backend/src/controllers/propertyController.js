@@ -5,12 +5,17 @@ const User = require('../models/user')
 const propertyController = {
     addProperty: async (req, res) => {
         try {
-            const { name, details, location, price, size, bedrooms, listedBy, interestedClients } = req.body
+            let { name, details, location, price, size, bedrooms, listedBy, interestedClients } = req.body
 
+            if(!listedBy)  listedBy = req.user._id;
+            
             const result = await Property.create({ name, details, location, price, size, bedrooms, listedBy })
-            console.log(result);
+           // console.log(result);
+
+            const properties = await Property.find({ "listedBy": req.user._id })
+
             res.status(201).json({
-                result, message: "New property added Successfully",
+                result , properties ,  message: "New property added Successfully",
                 details: ` ${name}, ${details}, ${location}, ${price}, ${bedrooms}, ${listedBy} interestedClients`
             })
 
@@ -41,7 +46,7 @@ const propertyController = {
         try {
             const agentId = req.params.id;
 
-            const properties = await Property.find({ listedBy: req.user._id})
+            const properties = await Property.find({ listedBy: req.user._id })
                 .select("_id name location price interestedClients")
                 .populate("interestedClients", "name email");
 
@@ -109,7 +114,9 @@ const propertyController = {
             // delete the property listed by agent from property-id
 
             const result = await Property.deleteOne({ "_id": req.params.id })
-            res.status(200).send({ result })
+            const properties = await Property.find({ "listedBy": req.user._id })
+
+            res.status(200).send({ result,properties })
 
         } catch (err) {
 
@@ -125,7 +132,9 @@ const propertyController = {
 
             const result = await Property.findByIdAndUpdate(req.params.id,
                 { name, details, location, price, size, bedrooms }, { new: true })
-            res.send({ result })
+            const properties = await Property.find({ "listedBy": req.user._id })
+            
+            res.send({ result , properties})
 
         } catch (err) {
 
@@ -141,14 +150,16 @@ const propertyController = {
             const { propertyId, clientId } = req.body
 
             const resultProp = await Property.findByIdAndUpdate(propertyId,
-                { $addToSet: { interestedClients: clientId } },        
+                { $addToSet: { interestedClients: clientId } },
                 { new: true })
 
             const resultUser = await User.findByIdAndUpdate(clientId,
-                 { $addToSet: { propertiesInterested: propertyId } },        
+                { $addToSet: { propertiesInterested: propertyId } },
                 { new: true })
 
-            res.send({ resultProp, resultUser })
+
+            const properties = await Property.find()
+            res.send({ resultProp, resultUser, properties })
 
         } catch (err) {
 

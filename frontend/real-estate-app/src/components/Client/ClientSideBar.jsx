@@ -12,6 +12,7 @@ const ClientSidebar = ({ onFilter }) => {
     //redux
     const filter = useSelector((state) => state.user.filter)
     const location = useSelector((state) => state.user.location)
+    const name = useSelector((state) => state.user.name);
     const dispatch = useDispatch()
 
 
@@ -39,13 +40,13 @@ const ClientSidebar = ({ onFilter }) => {
         }))
 
 
-        console.log("search :", location, maxPrice, minPrice, selectedBedrooms)
+       // console.log("search :", location, maxPrice, minPrice, selectedBedrooms)
 
 
         axios.post(`${import.meta.env.VITE_API_URL}/api/client/properties`, { location, maxPrice, minPrice, bedrooms: selectedBedrooms },
             { withCredentials: true })
             .then((res) => {
-                console.log(res.data);
+                //console.log(res.data);
                 dispatch(setPropertyList(res.data))
 
             })
@@ -64,12 +65,21 @@ const ClientSidebar = ({ onFilter }) => {
         // }))
         dispatch(clearFilter())
 
+        axios.post(`${import.meta.env.VITE_API_URL}/api/client/properties`, { },
+            { withCredentials: true })
+            .then((res) => {
+                // console.log(res.data);
+                dispatch(setPropertyList(res.data))
+
+            })
+            .catch((err) => console.error(err))
+
     };
 
     return (
         <div className="client-sidebar">
 
-            <div className="user-side">User</div>
+            <div className="user-side">{name ? name : "User"}</div>
             <h3>Filter Properties</h3>
 
             {/* Bedrooms Filter */}

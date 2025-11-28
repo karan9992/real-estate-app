@@ -37,7 +37,7 @@ const AgentMyProp = () => {
 
     useEffect(() => {
 
-        if (propertyList.length < 1) {
+      
             axios.get(`${import.meta.env.VITE_API_URL}/api/agent/properties/${id}`, {
                 withCredentials: true
             })
@@ -47,7 +47,7 @@ const AgentMyProp = () => {
                     dispatch(setPropertyList(res.data.properties))
                 })
                 .catch((err) => console.error(err))
-        }
+        
     }, [])
 
 

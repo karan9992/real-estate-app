@@ -29,7 +29,7 @@ const Landing = () => {
 
         axios.post(`${import.meta.env.VITE_API_URL}/api/auth/login`, user, { withCredentials: true })
             .then((res) => {
-                console.log(res);
+              //  console.log(res);
                 toast.success(res.data.message)
                 //redux store save values
                 dispatch(setId({ id: res.data.user._id }))
@@ -76,7 +76,7 @@ const Landing = () => {
 
                         <p className='title'>Login</p>
 
-                        <input type="email" placeholder='email' onChange={handleChange} required />
+                        <input type="email" placeholder='email' autoComplete='off' onChange={handleChange} required />
                         <input type="password" placeholder='password' onChange={handleChange} required />
 
                         <button >Login</button>

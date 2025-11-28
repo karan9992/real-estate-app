@@ -1,12 +1,27 @@
 import axios from "axios";
 import bedroomImg from "../../assets/images/blog-28.png"
 import './PropertyCard.css'
+import { setCurrentProperty, setPropertyList } from '../../redux/features/propertySlice';
+import { useDispatch } from "react-redux";
+import { toast,Slide, ToastContainer } from "react-toastify";
+
+
+
 const PropertyCard = ({ name, details, location, price, bedrooms, _id, btnName, btnFunction, btnDelete, deleteFunction }) => {
+
+    const dispatch = useDispatch()
+
 
     const delFunct = () => {
         console.log("delete:", name, _id);
         axios.delete(`${import.meta.env.VITE_API_URL}/api/agent/properties/${_id}`, { withCredentials: true })
-            .then((res) => console.log(res))
+            .then((res) => {
+                // console.log(res);
+                toast.success("Property deleted Successfully")
+                dispatch(setPropertyList(res.data.properties))
+
+            }
+            )
             .catch((err) => console.log(err))
     }
     return (
@@ -28,16 +43,20 @@ const PropertyCard = ({ name, details, location, price, bedrooms, _id, btnName, 
 
                 <p>Bedrooms - {bedrooms}</p>
                 <p>Price - {price}</p>
-                <button className="interest-btn" onClick={btnFunction}>{btnName}</button>
 
-                {btnDelete && (
-                    <button className="delete-btn" onClick={delFunct}>
-                        Delete
-                    </button>
-                )}
+                <div className="btn-section-prop">
+                    <button className="interest-btn" onClick={btnFunction}>{btnName}</button>
+
+                    {btnDelete && (
+                        <button className="delete-btn" onClick={delFunct}>
+                            Delete
+                        </button>
+                    )}
+                </div>
             </div>
-
+          
         </div>
+        
     )
 }
 

@@ -15,10 +15,10 @@ const AgentSidebar = () => {
 
 
   const handleLogout = () => {
-    console.log("Logged out");
+ //   console.log("Logged out");
     axios.post(`${import.meta.env.VITE_API_URL}/api/auth/logout`, {}, { withCredentials: true })
       .then((res) => {
-        console.log(res)
+        //console.log(res)
         dispatch(clearUser());
 
         navigate("/");

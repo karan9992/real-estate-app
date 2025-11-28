@@ -30,36 +30,7 @@ const NewlyAdded = () => {
 
     }, [])
 
-    const properties = [
-        {
-            name: "3 BHK Independent House",
-            bhk: 3,
-            location: "Freedom fighter enclave, Delhi",
-            price: 65,
-            image: "https://example.com/house1.jpg",
-        },
-        {
-            name: "2 BHK Independent House",
-            bhk: 2,
-            location: "Saket, New Delhi",
-            price: 40,
-            image: "https://example.com/house2.jpg",
-        }, {
-            name: "3 BHK Independent House",
-            bhk: 3,
-            location: "Freedom fighter enclave, Delhi",
-            price: 65,
-            image: "https://example.com/house1.jpg",
-        },
-        {
-            name: "2 BHK Independent House",
-            bhk: 2,
-            location: "Saket, New Delhi",
-            price: 40,
-            image: "https://example.com/house2.jpg",
-        },
-    ];
-
+   
 
     return (
         <section className="newly-added">
@@ -67,12 +38,12 @@ const NewlyAdded = () => {
             <p>Fresh listings to check out</p>
 
             <div className="card-row">
-                {propertyList.map((prop, index) => (
+                {propertyList?.map((prop, index) => (
                     <div className="property-card" key={index}>
                         <img src={bedroomImg} alt={prop.name} />
                         <h3>{prop.name}</h3>
                         <p>{prop.bedrooms} BHK</p>
-                        <p className="location">{prop.location}</p>
+                        <p className="location">{prop.location?.toUpperCase()}</p>
                         <p className="price">₹{prop.price} </p>
                         {/* <button className="contact-btn">Contact</button> */}
                     </div>

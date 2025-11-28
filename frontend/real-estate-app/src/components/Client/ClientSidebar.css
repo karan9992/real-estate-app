@@ -86,3 +86,15 @@ input[type="checkbox"]{
   background-color: #dc2626;
   color: white;
 }
+
+@media (max-width:768px) {
+  .checkbox-group{
+    flex-direction: row;
+  }
+  .user-side{
+    display: none;
+  }
+  input{
+    width: 90%;
+  }
+}

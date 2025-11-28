@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./EditPropertyModal.css";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { setCurrentProperty } from "../../redux/features/propertySlice";
+import { toast, Slide, ToastContainer } from "react-toastify";
+import { setCurrentProperty, setPropertyList } from '../../redux/features/propertySlice';
 
 const EditPropertyModal = ({ isOpen, onClose, initialData, onSave, title, isEdit }) => {
 
@@ -44,7 +45,7 @@ const EditPropertyModal = ({ isOpen, onClose, initialData, onSave, title, isEdit
     };
 
     if (isEdit) {
-      console.log("current-edit ", currentProperty);
+      // console.log("current-edit ", currentProperty);
 
       //api to edit properties
 
@@ -52,20 +53,26 @@ const EditPropertyModal = ({ isOpen, onClose, initialData, onSave, title, isEdit
         withCredentials: true
       })
         .then((res) => {
-          console.log(res);
+          //  console.log(res);
+          toast.success("Property Edited Successfully")
+          dispatch(setPropertyList(res.data.properties))
+
 
         })
         .catch((err) => console.error(err))
 
     } else {
-      console.log("current-add ", currentProperty, updatedData);
+      //  console.log("current-add ", currentProperty, updatedData);
 
       //api to add new property
       axios.post(`${import.meta.env.VITE_API_URL}/api/agent/add`, updatedData, {
         withCredentials: true
       })
         .then((res) => {
-          console.log(res);
+          // console.log(res);
+          toast.success("New Property Added ")
+          dispatch(setPropertyList(res.data.properties))
+
 
         })
         .catch((err) => console.error(err))
@@ -94,7 +101,12 @@ const EditPropertyModal = ({ isOpen, onClose, initialData, onSave, title, isEdit
 
   return (
     <div className="modal-overlay">
+
+
       <div className="modal-container">
+
+       
+
         <h2>{title}</h2>
         <form onSubmit={handleSubmit} className="modal-form">
           <input type="text" name="name" value={currentProperty?.name || ""} onChange={handleChange} placeholder="Property Name" required />
@@ -113,8 +125,11 @@ const EditPropertyModal = ({ isOpen, onClose, initialData, onSave, title, isEdit
             <button type="button" className="cancel-btn" onClick={onClose}>Cancel</button>
             <button type="submit" className="save-btn">Save</button>
           </div>
+
+
         </form>
       </div>
+
     </div>
   );
 };

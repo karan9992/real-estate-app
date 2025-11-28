@@ -10,31 +10,26 @@
 } */
 /* Grid layout for sidebar + content */
 .top-Acontainer {
-    flex: 1;                     /* Take full height except footer */
+    flex: 1;                     
     display: grid;
     grid-template-columns: 1fr 4fr;
     margin-top: 7vh;
     overflow-y:auto;
-    min-height: 80vh;         /* Stop internal overflow */
-    width: 100vw;                /* Instead of 100vw to prevent horizontal scroll */
+    min-height: 80vh;         
+    width: 100vw;                
 }
-/* .sidebar {
-    background-color: #3374d6;}
-.main {    
-    min-height: max-content;
-    background-color: #ffffffd2;
-} */
+
 
 .sidebar {
     background-color: #3374d6;
     min-height: 100%;
 }
 
-/* Main content (scrollable if content grows) */
+
 .main {
     background-color: #ffffffd2;  
-    overflow-y: auto;           /* Enable scrolling INSIDE main section */
-    max-height: calc(100vh - 7vh); /* Dynamically fits with navbar height */
+    overflow-y: auto;          
+    max-height: calc(100vh - 7vh); 
 }
 
 .footer-container{
@@ -47,4 +42,10 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+}
+
+@media (max-width:768px) {
+    .sidebar {
+       display: none;
+        }
 }

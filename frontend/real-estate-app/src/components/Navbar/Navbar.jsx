@@ -27,7 +27,7 @@ const Navbar = () => {
   const user = useSelector((state) => state.user.filter);
   const name = useSelector((state) => state.user.name);
 
-  // const [filter, setFilter] = useState(false);
+  const [filter, setFilter] = useState(false);
   const [location, setULocation] = useState("");
   const [showMenu, setShowMenu] = useState(false);
 
@@ -74,35 +74,49 @@ const Navbar = () => {
 
 
     <div className='navbar'>
-      <div className='logo flexbox'>
+      <div onClick={() => navigate("/")} className='logo flexbox'>
         <IoHomeOutline className='icon' /> <span className='logo-title'>KB Estates</span>
       </div>
 
       <div className='filter'>
-        {/* <div className='search-filter'>
-        <span onClick={() => setFilter(!filter)} className='flexbox filter-span'> Filter {!filter ? <FaChevronDown /> : <FaChevronUp />}</span>
-        {filter && <NavbarFilter />}
-      </div> */}
-        <input
-          className='search'
-          onChange={(e) => { setULocation(e.target.value) }}
-          placeholder='Search Location'
-        />
 
-        <button className='search-icon' onClick={handleSearch} ><FaSearch /></button>
+
+        {/* {filter && <NavbarFilter />} */}
+        {/* <button className='search-icon' onClick={()=>setFilter(prev=>!prev)} ><FaSearch /></button> */}
+        {(window.location.pathname == '/client') && <>
+          <input
+            className='search'
+            onChange={(e) => { setULocation(e.target.value) }}
+            placeholder='Search Location'
+          />
+          <button className='search-icon' onClick={handleSearch} ><FaSearch /></button>
+        </>
+        }
+
+
+
 
 
 
       </div>
 
       <div className='user flexbox' onClick={() => setShowMenu(prev => !prev)}>
-        <span className='logo-title'>{name ? "" : "User"}</span>
+        <span className='logo-title'>{name ? name : "User"}</span>
         <RiArrowDropDownLine className='icon down-icon' />
 
         {showMenu && (
           <div className="dropdown-menu">
-            <p onClick={handleProfile}>My Profile</p>
+            
+            {
+              (window.location.pathname.startsWith('/agent')) && <>
+                <p onClick={() => navigate("/agent")}>My Properties</p>
+                <p onClick={() => navigate("/agent/add")}>Add Property </p>
+                <p onClick={() => navigate("/agent/interested")} >Interested </p>
+              </>
+            }
+            {/* <p onClick={handleProfile}>My Profile</p> */}
             <p onClick={handleLogout}>Logout</p>
+
           </div>
         )}
       </div>

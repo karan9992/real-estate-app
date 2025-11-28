@@ -31,6 +31,7 @@ const Client = () => {
       .then((res) => {
         console.log(res);
         toast.success(`${prop.name} added to interested`)
+        dispatch(setPropertyList(res.data.properties))
 
       })
       .catch((err) => console.error(err))
@@ -51,6 +52,19 @@ const Client = () => {
   }, [])
 
   return (<>
+   <ToastContainer
+      position="top-right"
+      autoClose={3000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick={false}
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"
+      transition={Slide} />
+      
     <div className="main-container">
       <div className="sidebar">
         <ClientSidebar />
@@ -75,18 +89,7 @@ const Client = () => {
       </div>
     </div>
     <Footer />
-    <ToastContainer
-      position="top-right"
-      autoClose={3000}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick={false}
-      rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover
-      theme="light"
-      transition={Slide} />
+   
   </>
   );
 };

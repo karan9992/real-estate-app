@@ -16,12 +16,12 @@ const agentRoutes = require('./routes/agentRoutes');
 // Connect DB
 connectDb();
 
-console.log(("ENV :", process.env.FRONTEND_URL));
+
 const frontendUrl = process.env.FRONTEND_URL;
 const localFrontendUrl = process.env.FRONTEND_LOCAL_URL
 // CORS Options
 const corsOptions = {
-  origin:'https://real-estate-app-jii0.onrender.com',
+  origin: 'https://real-estate-app-jii0.onrender.com', //'http://localhost:5173',//
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
