@@ -59,7 +59,7 @@ const Navbar = () => {
 
 
 
-    axios.post('http://localhost:3000/api/client/properties', { location: location, ...user }, { withCredentials: true }
+    axios.post(`${import.meta.env.VITE_API_URL}/api/client/properties`, { location: location, ...user }, { withCredentials: true }
     )
       .then((res) => {
         console.log(res.data);
